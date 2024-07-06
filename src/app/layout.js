@@ -11,7 +11,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <AuthContextProvider>
+          <div className="w-full h-[100vh]  flex justify-center items-center">
           {children}
+          </div>
         </AuthContextProvider>
       </body>
     </html>

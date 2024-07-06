@@ -2,11 +2,10 @@
 import React from "react"
 import signIn from "@/firebase/auth/signIn"
 import { useRouter } from "next/navigation"
-import PageLayout from "@/component/PageLayout"
-import Button from "@/component/Button"
-import FormInput from "@/component/FormInput"
+import Button from "@/components/Button"
+import FormInput from "@/components/FormInput"
 import Link from "next/link"
-
+import FormLayout from "@/components/FormLayout"
 function Page() {
     const [email, setEmail] =React.useState('')
     const[password, setPassword]= React.useState('')
@@ -26,20 +25,17 @@ function Page() {
     }
 
     return(
-        <PageLayout>
-                <form onSubmit={handleForm} className="form flex flex-col">
-                    <label htmlFor="email">
-                        <p>Email</p>
-                        <FormInput onChange={(e) => setEmail(e.target.value)} required type="email" name="email" id="email" placeholder="example@mail.com" />
-                    </label>
-                    <label htmlFor="password">
-                        <p>Password</p>
-                        <FormInput onChange={(e) => setPassword(e.target.value)} required type="text" name="password" id="password" placeholder="password" />
-                    </label>
+        <FormLayout title="Sign In">
+                <form onSubmit={handleForm} className="form flex flex-col gap-3">
+                    
+                    <FormInput onChange={(e) => setEmail(e.target.value)} required type="email" name="email" id="email" placeholder="example@mail.com" />
+                   
+                    <FormInput onChange={(e) => setPassword(e.target.value)} required type="password" name="password" id="password" placeholder="password" />
+                 
                     <Button type="submit" text="SignIn" />
-                    <p>dont have an account ? <Link href='/signUp' className="text-rose-600">SIgnUp</Link></p>
+                    <p className="text-sm text-gray-600" >dont have an account ? <Link href='/signUp' className="text-rose-600">SIgnUp</Link></p>
                 </form>
-        </PageLayout>
+        </FormLayout>
     )
   }
 
