@@ -11,6 +11,7 @@ import FormLayout from "@/components/FormLayout"
 function Page() {
     const [email, setEmail] =React.useState('')
     const[password, setPassword]= React.useState('')
+    const [error, setError]= React.useState(null)
     const router = useRouter()
 
     const handleForm = async(event)=>{
@@ -18,8 +19,10 @@ function Page() {
 
         const { result, error } = await signUp(email, password);
 
-        if(error){
-            return console.error
+        if (error) {
+            setError(error.message)
+            return console.log(error)
+
         }
 
         console.log(result)
@@ -29,7 +32,7 @@ function Page() {
     return(
         <FormLayout title="Sign Up">
             <form onSubmit={handleForm} className="form flex flex-col gap-3">
-             
+            {error && <p className="text-red-500 text-sm">{error}</p>}
                 <FormInput onChange={(e) => setEmail(e.target.value)} required type="email" name="email" id="email" placeholder="example@mail.com" />
         
                 <FormInput onChange={(e) => setPassword(e.target.value)} required type="password" name="password" id="password" placeholder="password" />

@@ -8,8 +8,8 @@ export default async function signIn(email, password) {
         error = null;
     try {
         result = await signInWithEmailAndPassword(auth, email, password);
-    } catch (e) {
-        error = e;
+    } catch (err) {
+        error = err
     }
 
     return { result, error };

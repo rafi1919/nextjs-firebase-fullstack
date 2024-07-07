@@ -2,7 +2,10 @@
 import React from "react";
 import { useAuthContext} from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
-import getData from "@/firebase/firestore/getData";
+import Button from "@/components/Button";
+import { getAuth, signOut } from "firebase/auth";
+
+// import getData from "@/firebase/firestore/getData";
 
 function Page() {
     const { user } = useAuthContext()
@@ -11,7 +14,25 @@ function Page() {
         if (user == null) router.push("/")
     }, [user])
 
-    return (<h1>Wellcome</h1>);
+    const handleLogout = async () => {
+        const auth = getAuth();
+        try {
+            await signOut(auth);
+            localStorage.clear(); 
+            router.push("/");
+        } catch (error) {
+            console.error("error sign out", error);
+        }
+    };
+
+    return (        
+        <div className="flex flex-col ">
+
+            <h1 className="font-bold text-lg text-white">Welcome</h1>
+            <Button onClick={handleLogout} text="Sign Out"/>
+        </div>
+
+    );
 }
 
 export default Page;
