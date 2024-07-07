@@ -17,8 +17,6 @@ FullStack App with Next.js 13 and Firebase
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ### `preview`
-![main](https://github.com/rafi1919/nextjs-firebase-fullstack/blob/main/public/preview/demo1.mp4)
-
 
 https://github.com/rafi1919/nextjs-firebase-fullstack/assets/82299860/c21c4c48-c9f8-4767-b943-0b735fbba8fd
 
